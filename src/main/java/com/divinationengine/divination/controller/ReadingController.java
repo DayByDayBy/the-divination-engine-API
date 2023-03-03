@@ -1,7 +1,7 @@
 package com.divinationengine.divination.controller;
 
 import com.divinationengine.divination.models.Card;
-import com.divinationengine.divination.models.CardReading;
+import com.divinationengine.divination.models.CardInReading;
 import com.divinationengine.divination.models.Reading;
 import com.divinationengine.divination.repository.CardRepository;
 import com.divinationengine.divination.repository.ReadingRepository;
@@ -25,8 +25,8 @@ public class ReadingController {
     // 1. create a controller method to be able to generate a new reading, probably a getmapping
     // 2. inside method generate 3 or 10 cards as appropriate
     // 3. create a new reading instance
-    // 4. create a new CardReading instance per card created, with a position and reversed property to link reading with card
-    // 5. add the list of CardReadings to the reading instance
+    // 4. create a new CardInReading instance per card created, with a position and reversed property to link reading with card
+    // 5. add the list of CardInReadings to the reading instance
     // 6. send back in the response body the reading instance
 
 
@@ -58,7 +58,7 @@ public class ReadingController {
     @PostMapping(value = "/readings")
     public ResponseEntity<Reading> postReading(@RequestBody Reading reading){
 
-        System.out.println(reading.getCardReadings().get(0).getCard());
+//        System.out.println(reading.getCardInReadings().get(0).getCard());
         readingRepository.save(reading);
 
         return new ResponseEntity<>(reading, HttpStatus.CREATED);

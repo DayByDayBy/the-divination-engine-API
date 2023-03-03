@@ -2,6 +2,7 @@ package com.divinationengine.divination.models;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,13 +17,14 @@ public class Reading {
     private Long id;
 
 //    @JsonBackReference
+    @JsonIgnoreProperties({"reading"})
     @OneToMany(mappedBy = "reading", cascade = CascadeType.ALL)
-    private List<CardReading> cardReadings;
+    private List<CardInReading> cardReadings;
 
     public Reading() {
     }
 
-    public Reading(List<CardReading> cardReadings) {
+    public Reading(List<CardInReading> cardReadings) {
         this.cardReadings = cardReadings;
     }
 
@@ -34,14 +36,13 @@ public class Reading {
         this.id = id;
     }
 
-    public List<CardReading> getCardReadings() {
+    public List<CardInReading> getCardReadings() {
         return cardReadings;
     }
 
-    public void setCardReadings(List<CardReading> cardReadings) {
-
+    public void setCardReadings(List<CardInReading> cardReadings) {
         this.cardReadings = cardReadings;
-        this.cardReadings.forEach(cr -> cr.setReading(this) );
+        this.cardReadings.forEach(cr -> cr.setReading(this));
     }
 }
 

@@ -1,8 +1,11 @@
 package com.divinationengine.divination.models;
 
-public enum CardType {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public enum CardType {
+    @JsonProperty("major")
     major,
+    @JsonProperty("minor")
     minor
 
 }

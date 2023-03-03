@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "card_readings")
-public class CardReading {
+public class CardInReading {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,7 @@ public class CardReading {
     @JoinColumn(name = "reading_id", nullable = false)
     private Reading reading;
 
+    @JsonIgnoreProperties({"cardReadings"})
     @ManyToOne
     @JoinColumn(name = "card_id", nullable = false)
     private Card card;
@@ -25,10 +26,10 @@ public class CardReading {
     @Column(nullable = false)
     private boolean reversed;
 
-    public CardReading() {
+    public CardInReading() {
     }
 
-    public CardReading(Long id, Reading reading, Card card, int position, boolean reversed) {
+    public CardInReading(Long id, Reading reading, Card card, int position, boolean reversed) {
         this.id = id;
         this.reading = reading;
         this.card = card;

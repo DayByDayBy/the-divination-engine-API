@@ -19,7 +19,7 @@ public class Card {
 
     @JsonBackReference
     @OneToMany(mappedBy = "card")
-    private List<CardReading> cardReadings;
+    private List<CardInReading> cardReadings;
 
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)
@@ -58,7 +58,7 @@ public class Card {
                      String meaningUp,
                      String meaningRev,
                      String description,
-    List<CardReading> cardReadings) {
+    List<CardInReading> cardReadings) {
         this.type = type;
         this.nameShort = nameShort;
         this.suit = suit;
@@ -155,11 +155,11 @@ public class Card {
         this.description = description;
     }
 
-    public List<CardReading> getCardReadings() {
+    public List<CardInReading> getCardReadings() {
         return cardReadings;
     }
 
-    public void setCardReadings(List<CardReading> cardReadings) {
+    public void setCardReadings(List<CardInReading> cardReadings) {
         this.cardReadings = cardReadings;
     }
 }
